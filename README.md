@@ -17,7 +17,7 @@ xxxx = File Operation i.e. Create/CreateReplace/Append
 The SQL Stored Procedure TABLE2XML
 
 ## Author
-<strong>Birgitta Hauser<strong> has been a Software and Database Engineer since 2008, focusing on RPG, SQL and Web development on IBM i at Toolmaker Advanced Efficiency GmbH in Germany. She also works in consulting with regard to modernizaing applications on the IBM i as well as in education as a trainer for RPG and SQL developers. 
+<strong>Birgitta Hauser</strong> has been a Software and Database Engineer since 2008, focusing on RPG, SQL and Web development on IBM i at Toolmaker Advanced Efficiency GmbH in Germany. She also works in consulting with regard to modernizaing applications on the IBM i as well as in education as a trainer for RPG and SQL developers. 
 
 Since 2002 she has frequently spoken at the COMMON User Groups and other IBM i and Power Conferences in Germany, other European Countries, USA and Canada. 
 
@@ -59,7 +59,7 @@ In addition, she is co-author of two IBM Redbooks and also the author of several
      Example: 
      ```Call Wrt2IFS_Create(Cast('{"root": {"Name": "Hauser", 
                                             "FirstName": "Birgitta"}' as VarChar(256) CCSID 1208), 
-                                   '/home/Hauser/Tst20180224')```;
+                                   '/home/Hauser/Tst20180224');```
 
 ### WRT2IFS_CREATEREPLACE – Write Character Data to the IFS – Replace an existing files
     Parameter: ParText      – CLOB(16 M)         - Text to be written into the IFS
