@@ -3,18 +3,15 @@ Generate XML and JSON data and write them directly to the IFS with SQL
 
 ## Description
 This tool includes: 
-An Service Program (SNDMSG) with the prodecures for sending escape messages.
-
-The RPG Programs WRT2IFS = Write any text to the IFS and
-                 WRTXML2IFS = Write XML data (Data type XML) to the IFS
-
-The SQL Stored Procedures WRTIFSxxxx - Write any character data into the IFS. 
-xxxx = File Operation i.e. Create/CreateReplace/Append
-
-The SQL Stored Procedures WRTIFSxxxx - Write XML data (data type XML) into the IFS. 
-xxxx = File Operation i.e. Create/CreateReplace/Append
-
-The SQL Stored Procedure TABLE2XML
+<ul><li>Service Program SNDMSG with the prodecures for sending escape messages</li>
+<li>RPG Program WRT2IFS for Writing any text to the IFS</li>
+<li>RPG Program WRTXML2IFS for Writing XML data (Data type XML) to the IFS</li>
+<li>SQL Stored Procedures WRTIFSxxxx for Writing any character data into the IFS.</br> 
+  xxxx = File Operation i.e. Create/CreateReplace/Append</li>
+<li>SQL Stored Procedures WRTIFSxxxx - Write XML data (data type XML) into the IFS.</br> 
+xxxx = File Operation i.e. Create/CreateReplace/Append</li>
+<li>SQL Stored Procedure TABLE2XML for generating the XML data for a complete Db2 table</li>
+<li>SQL Stored Procedure JSON2XML for generating the XML data for a complete Db2 table</li></ul>
 
 ## Author
 <strong>Birgitta Hauser</strong> has been a Software and Database Engineer since 2008, focusing on RPG, SQL and Web development on IBM i at Toolmaker Advanced Efficiency GmbH in Germany. She also works in consulting with regard to modernizaing applications on the IBM i as well as in education as a trainer for RPG and SQL developers. 
