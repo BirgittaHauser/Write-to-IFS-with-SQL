@@ -20,6 +20,16 @@ Since 2002 she has frequently spoken at the COMMON User Groups and other IBM i a
 
 In addition, she is co-author of two IBM Redbooks and also the author of several articles and papers focusing on RPG and SQL for a German publisher, iPro Developer and IBM DeveloperWorks.
 
+## Compile
+### SNDMSG Service Program
+<ul><li>Create a module with the <strong>CRTRPGMOD</strong> CL command</li>
+  <li>Create the service Program with the <strong>CRTSRVPGM</strong CL command</br>
+      <pre>CRTSRVPGM SRVPGM(HSWRTIFS/SNDMSG)                                                   
+                     MODULE(SNDMSG)                                                            
+                     SRCFILE(HSWRTIFS/QSRVSRCBND)</pre>
+    </li></ul>
+    
+   
 ## Programs and Procedures:
 ### SNDMSG (RPG Service Program) – Sending Program Messages from within RPG
   Function SndEscMsg        – Send Escape message from within an RPG internal or exported procedure.
