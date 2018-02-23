@@ -23,9 +23,9 @@ Create or Replace Function TABLE2JSON(
        Not Secured                                                                                                      
        Set Option Datfmt  = *Iso,                                                                                       
                   Dbgview = *Source,                                                                                    
-                  Decmpt = *PERIOD,                                                                                     
-                  DLYPRP = *Yes,                                                                                        
-                  Optlob = *Yes                                                                                         
+                  Decmpt  = *PERIOD,                                                                                     
+                  DLYPRP  = *Yes,                                                                                        
+                  Optlob  = *Yes                                                                                         
                                                                                                                         
    Begin                                                                                                                
      Declare LocColList Clob(1 M)             Default '';                                                               
@@ -36,7 +36,6 @@ Create or Replace Function TABLE2JSON(
              Begin                                                                                                      
                 Declare LocErrText VarChar(132) Default '';                                                             
                 Get Diagnostics Condition 1 LocErrText = MESSAGE_TEXT;                                                  
-           --   Return JSON_Object('Error': LocErrText);                                                                
                 Return JSON_Object('Error': LocSQLCMD);                                                                 
              End;                                                                                                       
                                                                                                                         
