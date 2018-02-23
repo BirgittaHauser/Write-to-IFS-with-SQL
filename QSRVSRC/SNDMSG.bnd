@@ -1,0 +1,4 @@
+STRPGMEXP  PGMLVL(*CURRENT) LVLCHK(*YES) SIGNATURE(*GEN)
+EXPORT SYMBOL(SndEscMsg)                                                        
+EXPORT SYMBOL(SndEscMsgLinMain)                                                 
+ENDPGMEXP                
