@@ -44,8 +44,8 @@ Attention: The database objects are not qualified in the SQL script, so you need
    
 ## Programs and Procedures:
 ### SNDMSG (RPG Service Program) – Sending Program Messages from within RPG
-<ul><li>Function SndEscMsg: Send Escape message from within an RPG internal or exported procedure.</li>
-  <li>Function SndEscMsgLinMain: Send Escape message from within an RPG linear main procedure</li>
+<ul><li><b>Function SndEscMsg:</b> Send Escape message from within an RPG internal or exported procedure.</li>
+  <li><b>Function SndEscMsgLinMain:</b> Send Escape message from within an RPG linear main procedure</li>
 </ul>  
     
 Both procedures are necessary for signaling errors in the WRT2IFS RPG Program. 
