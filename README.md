@@ -51,9 +51,9 @@ Attention: The database objects are not qualified in the SQL script, so you need
 Both procedures are necessary for signaling errors in the WRT2IFS RPG Program. 
 
 ### WRT2IFS (RPG Program) – Write Character Data to the IFS
-  Parameter:  ParText       – VarChar(16000000)     - Text to be written into the IFS
-              ParIFSFile    – VarChar(1024)         – IFS File to be written, replaced or appended
-              ParOperation  – Integer               – 8=Create / 16=Replace / 32=Append
+Parameter:  ParText       VarChar(16000000) Text to be written into the IFS
+            ParIFSFile    VarChar(1024)     IFS File to be written, replaced or appended
+            ParOperation  Integer           8=Create / 16=Replace / 32=Append
                     
 ### WRTXML2IFS (RPG Program) – Write XML Data to the IFS
   Parameter:  ParXML        – VarChar(16000000) – Serialized XML data to be written into the IFS
@@ -67,7 +67,7 @@ Both procedures are necessary for signaling errors in the WRT2IFS RPG Program.
              ParOperation   – Integer          – 8=Create / 16=Replace / 32=Append
 
       Example:  
-      <pre>Call wrt2IFS('This is a test for checking whether data is written to the IFS', '/home/Hauser/Test20180224', 8);</pre>
+<pre>Call wrt2IFS('This is a test for checking whether data is written to the IFS', '/home/Hauser/Test20180224', 8);</pre>
 
 ### WRT2IFS_CREATE – Write Character Data to the IFS – Create a New File
      Parameter: ParText      – CLOB(16 M)           - Text to be written into the IFS
