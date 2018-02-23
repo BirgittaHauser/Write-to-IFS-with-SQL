@@ -67,88 +67,95 @@ Parameter:  ParText       VarChar(16000000) Text to be written into the IFS
              ParOperation   – Integer          – 8=Create / 16=Replace / 32=Append
 
       Example:  
-<pre>Call wrt2IFS('This is a test for checking whether data is written to the IFS', '/home/Hauser/Test20180224', 8);</pre>
+<pre>
+Call wrt2IFS('This is a test for checking whether data is written to the IFS', 
+             '/home/Hauser/Test20180224', 8);</pre>
 
 ### WRT2IFS_CREATE – Write Character Data to the IFS – Create a New File
-     Parameter: ParText      – CLOB(16 M)           - Text to be written into the IFS
-                ParIFSFile   – VarChar(1024)        – IFS File to be written, replaced or appended
+Parameter: ParText      – CLOB(16 M)           - Text to be written into the IFS
+           ParIFSFile   – VarChar(1024)        – IFS File to be written, replaced or appended
    
-     Calls the WRT2IFS Procedure, the File Operation is passed fix with 8
-     A new IFS file will be created. If the file already exists an error will be returned.
+Calls the WRT2IFS Procedure, the File Operation is passed fix with 8
+A new IFS file will be created. If the file already exists an error will be returned.
 
-     Example: 
-     ```Call Wrt2IFS_Create(Cast('{"root": {"Name": "Hauser", 
-                                            "FirstName": "Birgitta"}' as VarChar(256) CCSID 1208), 
-                                   '/home/Hauser/Tst20180224');```
+Example: 
+<pre>
+Call Wrt2IFS_Create(Cast('{"root": {"Name": "Hauser", 
+                                    "FirstName": "Birgitta"}' as VarChar(256) CCSID 1208), 
+                         '/home/Hauser/Tst20180224');</pre>
 
 ### WRT2IFS_CREATEREPLACE – Write Character Data to the IFS – Replace an existing files
-    Parameter: ParText      – CLOB(16 M)         - Text to be written into the IFS
-               ParIFSFile   – VarChar(1024)      – IFS File to be written, replaced or appended
+Parameter: ParText      – CLOB(16 M)         - Text to be written into the IFS
+           ParIFSFile   – VarChar(1024)      – IFS File to be written, replaced or appended
    
-    Calls the WRT2IFS Procedure, the File Operation is passed fix with 16
-    A new IFS file will be created. If the file already exists the existing one is replaced.
+Calls the WRT2IFS Procedure, the File Operation is passed fix with 16
+A new IFS file will be created. If the file already exists the existing one is replaced.
 
-    Example: 
-    ```Call Wrt2IFS_CreateReplace(Cast('{"root": {"Name": "Hauser", 
+Example: 
+<pre>Call Wrt2IFS_CreateReplace(Cast('{"root": {"Name": "Hauser", 
                                                   "FirstName": "Birgitta", 
                                                   "City": "Kaufering"}' as VarChar(256) CCSID 1208), 
-                                  '/home/Hauser/Tst20180224');```
+                                  '/home/Hauser/Tst20180224');</pre>
 
 ### WRT2IFS_APPEND – Write Character Data to the IFS – Append data to an existing one
-    Parameter: ParText      – CLOB(16 M)      - Text to be written into the IFS
-               ParIFSFile   – VarChar(1024)   – IFS File to be written, replaced or appended
+Parameter: ParText      – CLOB(16 M)      - Text to be written into the IFS
+           ParIFSFile   – VarChar(1024)   – IFS File to be written, replaced or appended
                
-    Calls the WRT2IFS Procedure, the File Operation is passed fix with 32
-    A new IFS file will be created. If the file already exists the text is appended at the end.
+Calls the WRT2IFS Procedure, the File Operation is passed fix with 32
+A new IFS file will be created. If the file already exists the text is appended at the end.
 
-    Example: 
-    ```Call Wrt2IFS_Append(Cast(', {"Street": "Dr.-Gerbl-Str.", 
-                                    "HausNr": 20}}' as VarChar(256) CCSID 1208), 
-                           '/home/Hauser/Tst20180127');```
+Example: 
+<pre>
+Call Wrt2IFS_Append(Cast(', {"Street": "Dr.-Gerbl-Str.", 
+                             "HausNr": 20}}' as VarChar(256) CCSID 1208), 
+                    '/home/Hauser/Tst20180127');</pre>
 
 ### WRTXML2IFSxxxx (Stored Procedures) – Write XML Data to the IFS
-    WRTXML2IFS – Write XML Data to the IFS --> Wrapper around the RPG Program WRT2IFS
-   	Parameter: ParText          – XML             – XML Data to be written into the IFS
-               ParIFSFile       – VarChar(1024)   – IFS File to be written, replaced or appended
-               ParOperation     – Integer         – 8=Create / 16=Replace / 32=Append
+WRTXML2IFS – Write XML Data to the IFS --> Wrapper around the RPG Program WRT2IFS
+Parameter: ParText          – XML             – XML Data to be written into the IFS
+           ParIFSFile       – VarChar(1024)   – IFS File to be written, replaced or appended
+           ParOperation     – Integer         – 8=Create / 16=Replace / 32=Append
 
-    Example: 
-    ```Call WrtXML2IFS(XMLElement(Name "root", XMLElement(Name "Name", 'Hauser')), 
-                       '/home/Hauser/TstXML20180127.xml', 16);```
+Example: 
+<pre>
+Call WrtXML2IFS(XMLElement(Name "root", XMLElement(Name "Name", 'Hauser')), 
+                       '/home/Hauser/TstXML20180127.xml', 16);</pre>
 
 ### WRTXML2IFS_CREATE – Write XML Data to the IFS – Create a New File
-    Parameter: ParText      – XML                 – XML Data to be written into the IFS
-               ParIFSFile   – VarChar(1024)       – IFS File to be written, replaced or appended
+Parameter: ParText      – XML                 – XML Data to be written into the IFS
+           ParIFSFile   – VarChar(1024)       – IFS File to be written, replaced or appended
    
-    Calls the WRTXML2IFS Procedure, the File Operation is passed fix with 8
-    A new IFS file will be created. If the file already exists an error will be returned
+Calls the WRTXML2IFS Procedure, the File Operation is passed fix with 8
+A new IFS file will be created. If the file already exists an error will be returned
 
-   Example: 
-   ```Call WrtXML2IFS_Create(XMLElement(Name "root", XMLElement(Name "Name", 'Hauser')), 
-                             '/home/Hauser/TstXML20180127.xml');```
+Example: 
+<pre>
+Call WrtXML2IFS_Create(XMLElement(Name "root", XMLElement(Name "Name", 'Hauser')), 
+                      '/home/Hauser/TstXML20180127.xml');</pre>
 
 ### WRT2IFS_CREATEREPLACE – Write XML Data to the IFS – Replace an existing file
-  	Parameter: ParText       – XML               – XML Data to be written into the IFS
-               ParIFSFile    – VarChar(1024)     – IFS File to be written, replaced or appended
+Parameter: ParText       – XML               – XML Data to be written into the IFS
+           ParIFSFile    – VarChar(1024)     – IFS File to be written, replaced or appended
    
-   Calls the WRTXML2IFS Procedure, the File Operation is passed fix with 16
-   A new IFS file will be created. If the file already exists the existing one is replaced.
+Calls the WRTXML2IFS Procedure, the File Operation is passed fix with 16
+A new IFS file will be created. If the file already exists the existing one is replaced.
 
-   Example: 
-   ```Call WrtXML2IFS_CreateReplace(XMLElement(Name "root", 
-                                               XMLElement(Name "Name", 'Hauser'), 
-                                               XMLElement(Name "FirstName", 'Birgitta')), 
-                                    '/home/Hauser/TstXML20180224.xml');```
+Example: 
+<pre>
+Call WrtXML2IFS_CreateReplace(XMLElement(Name "root", 
+                                         XMLElement(Name "Name", 'Hauser'), 
+                                         XMLElement(Name "FirstName", 'Birgitta')), 
+                              '/home/Hauser/TstXML20180224.xml');```</pre>
 
 ### WRT2IFS_APPEND – Write XML Data to the IFS – Append data to an existing file
-    Parameter: ParText     – XML                 – XML Data to be written into the IFS
-               ParIFSFile  – VarChar(1024)       - IFS File to be written, replaced or appended
+Parameter: ParText     – XML                 – XML Data to be written into the IFS
+           ParIFSFile  – VarChar(1024)       - IFS File to be written, replaced or appended
    
-   Calls the WRTXML2IFS Procedure, the File Operation is passed fix with 32
-   A new IFS file will be created. If the file already exists the text is appended at the end.
+Calls the WRTXML2IFS Procedure, the File Operation is passed fix with 32
+A new IFS file will be created. If the file already exists the text is appended at the end.
 
 ### TABLE2XML – Create an XML Document for a table with all columns
- Parameter: ParTable     – VarChar(128)    – Table (SQL Name) to be converted into XML
+Parameter: ParTable     – VarChar(128)    – Table (SQL Name) to be converted into XML
             ParSchema    – VarChar(128)    – Schema (SQL Name) of  the table to be converted into XML
             ParWhere     – VarChar(4096)   – Additional Where Conditions (without leading WHERE) for reducing the data 
                                              (Optional --> Default = ‘’)
@@ -159,59 +166,55 @@ Parameter:  ParText       VarChar(16000000) Text to be written into the IFS
             ParAsAttributes - VarChar(1)   – Y = single empty element per row, 
                                              all column data are passed as attributes (Optional  Default = ‘’)
 
-  Description:
-  For the passed table a list of all columns separated by a comma is generated with the LIST_AGG Aggregate function 
-  from the SYSCOLUMS view.
-  With this information and the passed parameter information a XMLGROUP Statement is performed that returns the XML data.
+Description:
+For the passed table a list of all columns separated by a comma is generated with the LIST_AGG Aggregate function 
+from the SYSCOLUMS view.
+With this information and the passed parameter information a XMLGROUP Statement is performed that returns the XML data.
 
-  Example:             Values(Table2XML('ADDRESSX', 'HSCOMMON05'));    
+Example:             
+<pre>Values(Table2XML('ADDRESSX', 'HSCOMMON05'));</pre>    
 
-  ```Values(Table2XML('ADDRESSX', 'HSCOMMON05',
+<pre>
+Values(Table2XML('ADDRESSX', 'HSCOMMON05',
                  ParWhere       => 'ZipCode between ''70000'' and ''80000''',
-                 ParOrderBy     => 'ZipCode, CustNo'));```   
+                 ParOrderBy     => 'ZipCode, CustNo'));</pre>  
  
-  ```Call WrtXML2IFS_Create(Table2XML('Umsatz', 'HSCOMMON05', 
-                 ParWhere        => 'Year(VerkDatum) = 2005', 
-                 ParOrderBy      => 'VerkDatum, KundeNr Desc',
-                 ParRoot         => '"Sales"',
-                 ParRow          => '"SalesRow"' --,
-                 ParAsAttributes => 'Y'
-                 )         , '/home/Hauser/Umsatz20180127.xml');``` 
+<pre>
+Call WrtXML2IFS_Create(Table2XML('Umsatz', 'HSCOMMON05', 
+                                 ParWhere        => 'Year(VerkDatum) = 2005', 
+                                 ParOrderBy      => 'VerkDatum, KundeNr Desc',
+                                 ParRoot         => '"Sales"',
+                                 ParRow          => '"SalesRow"' --,
+                                 ParAsAttributes => 'Y'),
+                        '/home/Hauser/Umsatz20180127.xml'); </pre> 
                  
-                 
-
 ### TABLE2JSON – Create JSON Data for a table containing all columns
-    Parameter: ParTable        – VarChar(128)    – Table (SQL Name) to be converted into XML
-               ParSchema       – VarChar(128)    – Schema (SQL Name) of  the table to be converted into XML
-               ParWhere        – VarChar(4096)   – Additional Where Conditions 
-                                                   (without leading WHERE) for reducing the data (Optional => Default = ‘’)
-               ParOrderBy      – VarChar(1024)   – Order by clause (without leading ORDER BY) 
-                                                   for sorting the result (Optional => Default = ‘’)
+Parameter: ParTable        – VarChar(128)    – Table (SQL Name) to be converted into XML
+           ParSchema       – VarChar(128)    – Schema (SQL Name) of  the table to be converted into XML
+           ParWhere        – VarChar(4096)   – Additional Where Conditions 
+                                              (without leading WHERE) for reducing the data (Optional => Default = ‘’)
+           ParOrderBy      – VarChar(1024)   – Order by clause (without leading ORDER BY) 
+                                              for sorting the result (Optional => Default = ‘’)
                
-    Description:
-    For the passed table a list containing with columns separated by a comma is generated with the ListAgg Aggregate function 
-    from the SYSCOLUMS view.
-    With this information and the passed parameter information and a composition of the JSON_ArrayAgg and JSON_Object functions
-    the JSON Data is created.
+ Description:
+ For the passed table a list containing with columns separated by a comma is generated with the ListAgg Aggregate function 
+ from the SYSCOLUMS view.
+ With this information and the passed parameter information and a composition of the JSON_ArrayAgg and JSON_Object functions
+ the JSON Data is created.
 
-    Example:             
-    ```Values(Table2JSON('ADDRESSX', 'HSCOMMON05'));```    
+ Example:             
+ <pre>Values(Table2JSON('ADDRESSX', 'HSCOMMON05'));</pre>    
 
-    ```Values(Table2JSON('ADDRESSX', 'HSCOMMON05',
-                        ParWhere       => 'ZipCode between ''70000'' and ''80000''',
-                        ParOrderBy     => 'ZipCode, CustNo'));```   
+
+<pre>
+Values(Table2JSON('ADDRESSX', 'HSCOMMON05',
+                  ParWhere       => 'ZipCode between ''70000'' and ''80000''',
+                  ParOrderBy     => 'ZipCode, CustNo'));</pre>   
  
-    ```Call WrtJSON2IFS_Create(Table2JSON('Umsatz', 'HSCOMMON05', 
-                                          ParWhere        => 'Year(VerkDatum) = 2005', 
-                                          ParOrderBy      => 'VerkDatum, KundeNr Desc',
-                                        ParRoot         => '"Sales"'),         
-                               '/home/Hauser/Umsatz20180224.json');```             
-
-     ```Call WrtXML2IFS_Create(Table2XML('Umsatz', 'HSCOMMON05', 
-                 ParWhere        => 'Year(VerkDatum) = 2005', 
-                 ParOrderBy      => 'VerkDatum, KundeNr Desc',
-                 ParRoot         => '"Sales"',
-                 ParRow          => '"SalesRow"' --,
-                 ParAsAttributes => 'Y'
-                 )         , '/home/Hauser/Umsatz20180127.xml');```             
+<pre>
+Call WrtJSON2IFS_Create(Table2JSON('Umsatz', 'HSCOMMON05', 
+                                   ParWhere    => 'Year(VerkDatum) = 2005', 
+                                   ParOrderBy  => 'VerkDatum, KundeNr Desc',
+                                   ParRoot     => '"Sales"'),         
+                        '/home/Hauser/Umsatz20180224.json');</pre>             
 
