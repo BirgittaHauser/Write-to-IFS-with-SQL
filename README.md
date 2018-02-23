@@ -92,10 +92,11 @@ Calls the WRT2IFS Procedure, the File Operation is passed fix with 16
 A new IFS file will be created. If the file already exists the existing one is replaced.
 
 Example: 
-<pre>Call Wrt2IFS_CreateReplace(Cast('{"root": {"Name": "Hauser", 
-                                                  "FirstName": "Birgitta", 
-                                                  "City": "Kaufering"}' as VarChar(256) CCSID 1208), 
-                                  '/home/Hauser/Tst20180224');</pre>
+<pre>
+Call Wrt2IFS_CreateReplace(Cast('{"root": {"Name": "Hauser", 
+                                           "FirstName": "Birgitta", 
+                                           "City": "Kaufering"}' as VarChar(256) CCSID 1208), 
+                           '/home/Hauser/Tst20180224');</pre>
 
 ### WRT2IFS_APPEND – Write Character Data to the IFS – Append data to an existing one
 Parameter: ParText      – CLOB(16 M)      - Text to be written into the IFS
@@ -119,7 +120,7 @@ Parameter: ParText          – XML             – XML Data to be written into 
 Example: 
 <pre>
 Call WrtXML2IFS(XMLElement(Name "root", XMLElement(Name "Name", 'Hauser')), 
-                       '/home/Hauser/TstXML20180127.xml', 16);</pre>
+                           '/home/Hauser/TstXML20180127.xml', 16);</pre>
 
 ### WRTXML2IFS_CREATE – Write XML Data to the IFS – Create a New File
 Parameter: ParText      – XML                 – XML Data to be written into the IFS
