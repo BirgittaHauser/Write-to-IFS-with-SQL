@@ -24,11 +24,23 @@ In addition, she is co-author of two IBM Redbooks and also the author of several
 ### SNDMSG Service Program
 <ul><li>Create a module with the <strong>CRTRPGMOD</strong> CL command</li>
   <li>Create the service Program with the <strong>CRTSRVPGM</strong CL command</br>
-      <pre>CRTSRVPGM SRVPGM(HSWRTIFS/SNDMSG)                                                   
-                     MODULE(SNDMSG)                                                            
-                     SRCFILE(HSWRTIFS/QSRVSRCBND)</pre>
-    </li></ul>
-    
+      <pre>CRTSRVPGM SRVPGM(YOURSCHEMA/SNDMSG)                                                   
+                MODULE(SNDMSG)                                                            
+                SRCFILE(YOURSCHEMA/QSRVSRC)</pre>
+   </li></ul>
+   
+If you create a binder directory names HSBNDDIR and add the SNDMSG service program to the binding directory in your schema and add the SNDMSG service program to this binding directory, you can create the RPG programs with the CRTBNDRPG command.
+
+The SQL Scripts containing the source code for the stored procedures, can be run with the RUNSQLSTM command:
+<pre>RUNSQLSTM SRCFILE(YOURSCHEMA/QSQLSRC)   
+               SRCMBR(TABLE2JSON)          
+               COMMIT(*NONE)               
+               NAMING(*SYS)                
+               MARGINS(132)                
+               DFTRDBCOL(YOURSCHEMA)</pre>  
+               
+It is also possible to run the SQL scripts from the RUN SQL SCRIPTING facility in Client Access or (even better) ACS (Access Client Solution). 
+Attention: The database objects are not qualified in the SQL script, so you need to add the SCHEMA by ourself.
    
 ## Programs and Procedures:
 ### SNDMSG (RPG Service Program) – Sending Program Messages from within RPG
@@ -134,6 +146,39 @@ In addition, she is co-author of two IBM Redbooks and also the author of several
    Calls the WRTXML2IFS Procedure, the File Operation is passed fix with 32
    A new IFS file will be created. If the file already exists the text is appended at the end.
 
+### TABLE2XML – Create an XML Document for a table with all columns
+ Parameter: ParTable     – VarChar(128)    – Table (SQL Name) to be converted into XML
+            ParSchema    – VarChar(128)    – Schema (SQL Name) of  the table to be converted into XML
+            ParWhere     – VarChar(4096)   – Additional Where Conditions (without leading WHERE) for reducing the data 
+                                             (Optional --> Default = ‘’)
+            ParOrderBy   – VarChar(1024)   – Order by clause (without leading ORDER BY) for sorting the result 
+                                             (Optional --> Default = ‘’)
+            ParRoot      – VarChar(128)    - Name of the Root Element (Optional --> Default = ‘”rowset”’)
+            ParRow       – VarChar(128)    – Name of the Row Element (Optional --> Default = ‘”row”’)
+            ParAsAttributes - VarChar(1)   – Y = single empty element per row, 
+                                             all column data are passed as attributes (Optional  Default = ‘’)
+
+  Description:
+  For the passed table a list of all columns separated by a comma is generated with the LIST_AGG Aggregate function 
+  from the SYSCOLUMS view.
+  With this information and the passed parameter information a XMLGROUP Statement is performed that returns the XML data.
+
+  Example:             Values(Table2XML('ADDRESSX', 'HSCOMMON05'));    
+
+  ```Values(Table2XML('ADDRESSX', 'HSCOMMON05',
+                 ParWhere       => 'ZipCode between ''70000'' and ''80000''',
+                 ParOrderBy     => 'ZipCode, CustNo'));```   
+ 
+  ```Call WrtXML2IFS_Create(Table2XML('Umsatz', 'HSCOMMON05', 
+                 ParWhere        => 'Year(VerkDatum) = 2005', 
+                 ParOrderBy      => 'VerkDatum, KundeNr Desc',
+                 ParRoot         => '"Sales"',
+                 ParRow          => '"SalesRow"' --,
+                 ParAsAttributes => 'Y'
+                 )         , '/home/Hauser/Umsatz20180127.xml');``` 
+                 
+                 
+
 ### TABLE2JSON – Create JSON Data for a table containing all columns
     Parameter: ParTable        – VarChar(128)    – Table (SQL Name) to be converted into XML
                ParSchema       – VarChar(128)    – Schema (SQL Name) of  the table to be converted into XML
@@ -161,4 +206,11 @@ In addition, she is co-author of two IBM Redbooks and also the author of several
                                         ParRoot         => '"Sales"'),         
                                '/home/Hauser/Umsatz20180224.json');```             
 
+     ```Call WrtXML2IFS_Create(Table2XML('Umsatz', 'HSCOMMON05', 
+                 ParWhere        => 'Year(VerkDatum) = 2005', 
+                 ParOrderBy      => 'VerkDatum, KundeNr Desc',
+                 ParRoot         => '"Sales"',
+                 ParRow          => '"SalesRow"' --,
+                 ParAsAttributes => 'Y'
+                 )         , '/home/Hauser/Umsatz20180127.xml');```             
 
