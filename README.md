@@ -44,10 +44,11 @@ Attention: The database objects are not qualified in the SQL script, so you need
    
 ## Programs and Procedures:
 ### SNDMSG (RPG Service Program) – Sending Program Messages from within RPG
-  Function SndEscMsg        – Send Escape message from within an RPG internal or exported procedure.
-  Function SndEscMsgLinMain – send Escape message from within an RPG linear main procedure
+<d><tr>Function SndEscMsg</tr><tr>Send Escape message from within an RPG internal or exported procedure.</tr>
+  <tr>Function SndEscMsgLinMain</tr><tr>Send Escape message from within an RPG linear main procedure</tr>
+</td>  
     
-  Both procedures are necessary for signaling errors in the WRT2IFS RPG Program 
+<p>Both procedures are necessary for signaling errors in the WRT2IFS RPG Program</p> 
 
 ### WRT2IFS (RPG Program) – Write Character Data to the IFS
   Parameter:  ParText       – VarChar(16000000)     - Text to be written into the IFS
@@ -66,7 +67,7 @@ Attention: The database objects are not qualified in the SQL script, so you need
              ParOperation   – Integer          – 8=Create / 16=Replace / 32=Append
 
       Example:  
-      ```Call wrt2IFS('This is a test for checking whether data is written to the IFS', '/home/Hauser/Test20180224', 8);```
+      <pre>Call wrt2IFS('This is a test for checking whether data is written to the IFS', '/home/Hauser/Test20180224', 8);</pre>
 
 ### WRT2IFS_CREATE – Write Character Data to the IFS – Create a New File
      Parameter: ParText      – CLOB(16 M)           - Text to be written into the IFS
