@@ -25,26 +25,26 @@ In addition, she is co-author of two IBM Redbooks and also the author of several
 
 ## Programs and Procedures:
 ### SNDMSG (RPG Service Program) – Sending Program Messages from within RPG
-      Function SndEscMsg        – Send Escape message from within an RPG internal or exported procedure.
-    	Function SndEscMsgLinMain – send Escape message from within an RPG linear main procedure
+  Function SndEscMsg        – Send Escape message from within an RPG internal or exported procedure.
+  Function SndEscMsgLinMain – send Escape message from within an RPG linear main procedure
     
-      Both procedures are necessary for signaling errors in the WRT2IFS RPG Program 
+  Both procedures are necessary for signaling errors in the WRT2IFS RPG Program 
 
 ### WRT2IFS (RPG Program) – Write Character Data to the IFS
-      Parameter:  ParText       – VarChar(16000000)     - Text to be written into the IFS
-                  ParIFSFile    – VarChar(1024)         – IFS File to be written, replaced or appended
-                  ParOperation  – Integer               – 8=Create / 16=Replace / 32=Append
+  Parameter:  ParText       – VarChar(16000000)     - Text to be written into the IFS
+              ParIFSFile    – VarChar(1024)         – IFS File to be written, replaced or appended
+              ParOperation  – Integer               – 8=Create / 16=Replace / 32=Append
                     
 ### WRTXML2IFS (RPG Program) – Write XML Data to the IFS
-      Parameter:  ParXML        – VarChar(16000000) – Serialized XML data to be written into the IFS
-                  ParIFSFile    – VarChar(1024)     – IFS File to be written, replaced or appended
-                  ParOperation  – Integer           – 8=Create / 16=Replace / 32=Append
+  Parameter:  ParXML        – VarChar(16000000) – Serialized XML data to be written into the IFS
+              ParIFSFile    – VarChar(1024)     – IFS File to be written, replaced or appended
+              ParOperation  – Integer           – 8=Create / 16=Replace / 32=Append
 
 ### WRT2IFSxxxxx (Stored Procedures) – Write Character Data into the IFS
-      WRT2IFS – Write Character Data to the IFS --> Wrapper around the RPG Program WRT2IFS
-      Parameter: ParText        – CLOB(16 M)       - Text to be written into the IFS
-                 ParIFSFile     – VarChar(1024)    – IFS File to be written, replaced or appended
-                 ParOperation   – Integer          – 8=Create / 16=Replace / 32=Append
+  WRT2IFS – Write Character Data to the IFS --> Wrapper around the RPG Program WRT2IFS
+  Parameter: ParText        – CLOB(16 M)       - Text to be written into the IFS
+             ParIFSFile     – VarChar(1024)    – IFS File to be written, replaced or appended
+             ParOperation   – Integer          – 8=Create / 16=Replace / 32=Append
 
       Example:  
       ```Call wrt2IFS('This is a test for checking whether data is written to the IFS', '/home/Hauser/Test20180224', 8);```
