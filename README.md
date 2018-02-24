@@ -44,16 +44,22 @@ Attention: The database objects are not qualified in the SQL script, so you need
    
 ## Programs and Procedures:
 ### SNDMSG (RPG Service Program) – Sending Program Messages from within RPG
-<ul><li><b>Function SndEscMsg:</b> Send Escape message from within an RPG internal or exported procedure.</li>
-  <li><b>Function SndEscMsgLinMain:</b> Send Escape message from within an RPG linear main procedure</li>
-</ul>  
+<Table>
+  <tr><th>Function Name</th><th>Description</th></tr>
+  <tr><td><b>SndEscMsg</b></td><td>Send Escape message from within an RPG internal or exported procedure.</td></tr>
+  <tr><td><b>SndEscMsgLinMain</b></td><td>Send Escape message from within an RPG linear main procedure</td></tr>
+</Table>  
     
 Both procedures are necessary for signaling errors in the WRT2IFS RPG Program. 
 
 ### WRT2IFS (RPG Program) – Write Character Data to the IFS
-Parameter:  ParText       VarChar(16000000) Text to be written into the IFS
-            ParIFSFile    VarChar(1024)     IFS File to be written, replaced or appended
-            ParOperation  Integer           8=Create / 16=Replace / 32=Append
+Parameter:  
+<Table>
+<tr><th>Parameter Name</th><th>Data Type/Length</th><th>Description</th></tr>
+<tr><td><b>ParText</b></td><td>VarChar(16000000)</td><td>Text to be written into the IFS</td></tr>
+<tr><td><b>ParIFSFile</b></td><td>VarChar(1024)</td><td>IFS File to be written, replaced or appended</td></tr>
+<tr><td><b>ParOperation</b></td><td>Integer</td><td>8=Create / 16=Replace / 32=Append<td></tr>
+</table>  
                     
 ### WRTXML2IFS (RPG Program) – Write XML Data to the IFS
   Parameter:  ParXML        – VarChar(16000000) – Serialized XML data to be written into the IFS
