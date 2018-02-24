@@ -15,9 +15,6 @@ This tool includes:
 <tr><td>SQL Stored Procedures </td><td><b>WRTXML2IFSxxxx</b></td><td>for writing XML data (data type XML) into the IFS.</br> 
                                                                  xxxx = File Operation 
                                                                  <br>i.e. Create/CreateReplace/Append</td></tr>
-<tr><td>SQL User Defined Function  </td><td><b>TABLE2XML </b></td><td> for generating the XML data for a complete Db2 table</td></tr>
-<tr><td>SQL User Defined Function  </td><td><b>JSON2XML  </b></td><td> for generating the JSON data 
-                                                                  for a complete Db2 table</td></tr>
 </Table>
 
 ## Author
@@ -238,83 +235,4 @@ Parameter:
    
 Calls the WRTXML2IFS Procedure, the File Operation is passed fix with 32
 A new IFS file will be created. If the file already exists the text is appended at the end.
-
-### TABLE2XML – Create an XML Document for a table with all columns
-Parameter: 
-<table>  
-<tr><th>Parameter Name</th><th>Data Type/Length</th><th>Description</th></tr>  
-<tr><td><b>ParTable        </b></td><td>VarChar(128)    </td><td>Table (SQL Name) to be converted into XML</td><tr>
-<tr><td><b>ParSchema       </b></td><td>VarChar(128)    </td><td>Schema (SQL Name) of the table to be converted into XML
-                                                        </td><tr>
-<tr><td><b>ParWhere        </b></td><td>VarChar(4096)   </td><td>Additional Where Conditions (without leading WHERE)<br> 
-                                                                 for reducing the data<br> 
-                                                                 (Optional --> Default = ‘’)</td><tr>
-<tr><td><b>ParOrderBy      </b></td><td>VarChar(1024)   </td><td>Order by clause (without leading ORDER BY)<br> 
-                                                                 for sorting the result<br> 
-                                                                 (Optional --> Default = ‘’)</td><tr>
-<tr><td><b>ParRoot         </b></td><td>VarChar(128)    </td><td>Name of the Root Element<br> 
-                                                                 (Optional --> Default = ‘”rowset”’)</td><tr> 
-<tr><td><b>ParRow          </b></td><td>VarChar(128)    </td><td>Name of the Row Element 
-                                                                 (Optional --> Default = ‘”row”’)</td><tr>
-<tr><td><b>ParAsAttributes </b></td><td>VarChar(1)      </td><td>Y = single empty element per row,<br> 
-                                                                     all column data are passed as attributes<br> 
-                                                                 (Optional --> Default = ‘’)
-</table>  
-
-Description:
-For the passed table a list of all columns separated by a comma is generated with the LIST_AGG Aggregate function 
-from the SYSCOLUMS view.
-With this information and the passed parameter information a XMLGROUP Statement is performed that returns the XML data.
-
-Example:             
-<pre>Values(Table2XML('ADDRESSX', 'HSCOMMON10'));</pre>    
-
-<pre>
-Values(Table2XML('ADDRESSX', 'HSCOMMON10',
-                 ParWhere       => 'ZipCode between ''70000'' and ''80000''',
-                 ParOrderBy     => 'ZipCode, CustNo'));</pre>  
- 
-<pre>
-Call WrtXML2IFS_Create(Table2XML('SALES', 'HSCOMMON10', 
-                                 ParWhere        => 'Year(SalesDate) = 2018', 
-                                 ParOrderBy      => 'SalesDate, CustNo Desc',
-                                 ParRoot         => '"Sales"',
-                                 ParRow          => '"SalesRow"',
-                                 ParAsAttributes => 'Y'),
-                        '/home/Hauser/Umsatz20180224.xml'); </pre> 
-                 
-### TABLE2JSON – Create JSON Data for a table containing all columns
-Parameter:
-<table>  
-<tr><th>Parameter Name</th><th>Data Type/Length</th><th>Description</th></tr>  
-<tr><td><b>ParTable     </b></td><td>VarChar(128)    </td><td>Table (SQL Name) to be converted into JSON</td><tr>
-<tr><td><b>ParSchema    </b></td><td>VarChar(128)    </td><td>Schema (SQL Name) of the table to be converted into JSON</td><tr>
-<tr><td><b>ParWhere     </b></td><td>VarChar(4096)   </td><td>Additional Where Conditions (without leading WHERE)<br> 
-                                                     for reducing the data<br> 
-                                                     (Optional => Default = ‘’)</td><tr>
-<tr><td><b>ParOrderBy   </b></td><td>VarChar(1024)   </td><td>Order by clause (without leading ORDER BY)<br> 
-                                                     for sorting the result<br> 
-                                                     (Optional => Default = ‘’)</td><tr>
-  </table>
-               
- Description:
- For the passed table a list containing with columns separated by a comma is generated with the ListAgg Aggregate function 
- from the SYSCOLUMS view.
- With this information and the passed parameter information and a composition of the JSON_ArrayAgg and JSON_Object functions
- the JSON Data is created.
-
- Example:             
- <pre>Values(Table2JSON('ADDRESSX', 'HSCOMMON10'));</pre>    
-
-<pre>
-Values(Table2JSON('ADDRESSX', 'HSCOMMON10',
-                  ParWhere       => 'ZipCode between ''70000'' and ''80000''',
-                  ParOrderBy     => 'ZipCode, CustNo'));</pre>   
- 
-<pre>
-Call WrtJSON2IFS_Create(Table2JSON('SALES', 'HSCOMMON10', 
-                                   ParWhere    => 'Year(SalesDate) = 2017', 
-                                   ParOrderBy  => 'SalesDate, CustNo Desc',
-                                   ParRoot     => '"Sales"'),         
-                        '/home/Hauser/Umsatz20180224.json');</pre>             
 
