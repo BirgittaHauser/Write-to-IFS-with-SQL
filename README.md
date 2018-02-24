@@ -34,9 +34,11 @@ In addition, she is co-author of two IBM Redbooks and also the author of several
                 MODULE(SNDMSG)                                                            
                 SRCFILE(YOURSCHEMA/QSRVSRC)</pre>
    </li></ul>
-   
+
+### RPG Programs
 If you create a binder directory with the name <b>HSBNDDIR</b> in your schema and <b>add the SNDMSG service program</b> to this binder directory, the RPG programs can be compiled with the the <b>CRTBNDRPG command</b>.
 
+### SQL Stored Procedures and User Defined Functions
 The SQL Scripts containing the source code for the stored procedures, can be run with the <b>RUNSQLSTM command</b>:
 <pre>RUNSQLSTM SRCFILE(YOURSCHEMA/QSQLSRC)   
                SRCMBR(TABLE2JSON)          
@@ -95,6 +97,7 @@ Parameter:
 <tr><td><b>ParText        </b></td><td>CLOB(16 M)       </td><td>Text to be written into the IFS</td><tr>
 <tr><td><b>ParIFSFile     </b></td><td>VarChar(1024)    </td><td>IFS File to be written, replaced or appended</td><tr>
 <tr><td><b>ParOperation   </b></td><td>Integer          </td><td>8=Create / 16=Replace / 32=Append</td><tr>
+</table>  
 
 The WRT2IFSxxxxx stored procedures are Wrapper around the RPG Program WRT2IFS.
 
