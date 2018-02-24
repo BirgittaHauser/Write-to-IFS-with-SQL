@@ -54,7 +54,7 @@ It is also possible to run the SQL scripts from the b>RUN SQL SCRIPTING facility
                                    so you need to <b>add YOURSCHEMA</b> to the script by yourself.</td><tr>
 </Table>
    
-## Programs and Procedures:
+## Program and Procedure Descriptions:
 ### SNDMSG (RPG Service Program) – Sending Program Messages from within RPG
 <Table>
   <tr><th>Function Name</th><th>Description</th></tr>
@@ -107,10 +107,14 @@ Call wrt2IFS('This is a test for checking whether data is written to the IFS',
              '/home/Hauser/Test20180224', 8);</pre>
 
 ### WRT2IFS_CREATE – Write Character Data to the IFS – Create a New File
-Parameter: ParText      – CLOB(16 M)           - Text to be written into the IFS
-           ParIFSFile   – VarChar(1024)        – IFS File to be written, replaced or appended
-   
-Calls the WRT2IFS Procedure, the File Operation is passed fix with 8
+Parameter: 
+<table>
+<tr><th>Parameter Name</th><th>Data Type/Length</th><th>Description</th></tr>    
+<tr><td><b>ParText      </b></td><td>CLOB(16 M)           </td><td>Text to be written into the IFS</td><tr>
+<tr><td><b>ParIFSFile   </b></td><td>VarChar(1024)        </td><td>IFS File to be written, replaced or appended</td><tr>
+</table>
+
+Calls the WRT2IFS Procedure, the File Operation is passed fix with 8.
 A new IFS file will be created. If the file already exists an error will be returned.
 
 Example: 
