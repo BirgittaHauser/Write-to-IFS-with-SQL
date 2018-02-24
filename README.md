@@ -60,29 +60,45 @@ It is also possible to run the SQL scripts from the b>RUN SQL SCRIPTING facility
   <tr><td><b>SndEscMsgLinMain</b></td><td>Send Escape message from within an RPG linear main procedure</td></tr>
 </Table>  
     
-Both procedures are necessary for signaling errors in the WRT2IFS RPG Program. 
+Both procedures are needed for signaling errors in the WRT2IFS RPG Program. 
 
 ### WRT2IFS (RPG Program) – Write Character Data to the IFS
 Parameter:  
-<Table>
+<table>
 <tr><th>Parameter Name</th><th>Data Type/Length</th><th>Description</th></tr>
-<tr><td><b>ParText</b></td><td>VarChar(16000000)</td><td>Text to be written into the IFS</td></tr>
-<tr><td><b>ParIFSFile</b></td><td>VarChar(1024)</td><td>IFS File to be written, replaced or appended</td></tr>
-<tr><td><b>ParOperation</b></td><td>Integer</td><td>8=Create / 16=Replace / 32=Append<td></tr>
+<tr><td><b>ParText     </b></td><td>VarChar(16000000)</td><td>Text to be written into the IFS</td></tr>
+<tr><td><b>ParIFSFile  </b></td><td>VarChar(1024)    </td><td>IFS File to be written, replaced or appended</td></tr>
+<tr><td><b>ParOperation</b></td><td>Integer          </td><td>8=Create / 16=Replace / 32=Append<td></tr>
 </table>  
+
+With the WRT2IFS program any character data can be written to the IFS.
+The program WRT2IFS will write the passed data to the specified IFS file.
+The program WRT2IFS is registered as SQL Stored Procedure.
                     
 ### WRTXML2IFS (RPG Program) – Write XML Data to the IFS
-  Parameter:  ParXML        – VarChar(16000000) – Serialized XML data to be written into the IFS
-              ParIFSFile    – VarChar(1024)     – IFS File to be written, replaced or appended
-              ParOperation  – Integer           – 8=Create / 16=Replace / 32=Append
+Parameter:  
+<table>  
+<tr><th>Parameter Name</th><th>Data Type/Length</th><th>Description</th></tr>  
+<tr><td><b>ParXML        </b></td><td>VarChar(16000000)</td><td>Serialized XML data to be written into the IFS</td><tr>
+<tr><td><b>ParIFSFile    </b></td><td>VarChar(1024)    </td><td>IFS File to be written, replaced or appended</td><tr>
+<tr><td><b>ParOperation  </b></td><td>Integer          </td><td>8=Create / 16=Replace / 32=Append</td><tr>
+</table>  
+
+With the WRTXML2IFS program wellformed XML data can be written to the IFS.
+The program WRTXML2IFS will write the passed data to the specified IFS file.
+The program WRTXML2IFS is registered as SQL Stored Procedure.
 
 ### WRT2IFSxxxxx (Stored Procedures) – Write Character Data into the IFS
-  WRT2IFS – Write Character Data to the IFS --> Wrapper around the RPG Program WRT2IFS
-  Parameter: ParText        – CLOB(16 M)       - Text to be written into the IFS
-             ParIFSFile     – VarChar(1024)    – IFS File to be written, replaced or appended
-             ParOperation   – Integer          – 8=Create / 16=Replace / 32=Append
+Parameter: 
+<table>  
+<tr><th>Parameter Name</th><th>Data Type/Length</th><th>Description</th></tr>  
+<tr><td><b>ParText        </b></td><td>CLOB(16 M)       </td><td>Text to be written into the IFS</td><tr>
+<tr><td><b>ParIFSFile     </b></td><td>VarChar(1024)    </td><td>IFS File to be written, replaced or appended</td><tr>
+<tr><td><b>ParOperation   </b></td><td>Integer          </td><td>8=Create / 16=Replace / 32=Append</td><tr>
 
-      Example:  
+The WRT2IFSxxxxx stored procedures are Wrapper around the RPG Program WRT2IFS.
+
+Example:  
 <pre>
 Call wrt2IFS('This is a test for checking whether data is written to the IFS', 
              '/home/Hauser/Test20180224', 8);</pre>
