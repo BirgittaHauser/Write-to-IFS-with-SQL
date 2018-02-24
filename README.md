@@ -9,10 +9,10 @@ This tool includes:
                                                                  for sending escape messages</td><tr>
 <tr><td>RPGLE Program         </td><td><b>WRT2IFS   </b></td><td>for writing any text to the IFS</td></tr>
 <tr><td>RPG Program           </td><td><b>WRTXML2IFS</b></td><td>for writing XML data (Data type XML) to the IFS</td></tr>
-<tr><td>SQL Stored Procedures </td><td><b>WRTIFSxxxx</b></td><td>for writing any character data into the IFS.</br> 
+<tr><td>SQL Stored Procedures </td><td><b>WRT2IFSxxxx</b></td><td>for writing any character data into the IFS.</br> 
                                                                  xxxx = File Operation <br>
                                                                  i.e. Create/CreateReplace/Append</td></tr>
-<tr><td>SQL Stored Procedures </td><td><b>WRTIFSxxxx</b></td><td>for writing XML data (data type XML) into the IFS.</br> 
+<tr><td>SQL Stored Procedures </td><td><b>WRTXML2IFSxxxx</b></td><td>for writing XML data (data type XML) into the IFS.</br> 
                                                                  xxxx = File Operation 
                                                                  <br>i.e. Create/CreateReplace/Append</td></tr>
 <tr><td>SQL Stored Procedure  </td><td><b>TABLE2XML </b></td><td> for generating the XML data for a complete Db2 table</td></tr>
