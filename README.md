@@ -16,7 +16,7 @@ This tool includes:
                                                                  xxxx = File Operation 
                                                                  <br>i.e. Create/CreateReplace/Append</td></tr>
 <tr><td>SQL Stored Procedure  </td><td><b>TABLE2XML </b></td><td> for generating the XML data for a complete Db2 table</td></tr>
-<tr><td>SQL Stored Procedure  </td><td><b>JSON2XML  </b></td><td> for generating the XML data for a complete Db2 table</td></tr>
+<tr><td>SQL Stored Procedure  </td><td><b>JSON2XML  </b></td><td> for generating the JSON data for a complete Db2 table</td></tr>
 </Table>
 
 ## Author
