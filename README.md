@@ -226,16 +226,26 @@ Calls the WRTXML2IFS Procedure, the File Operation is passed fix with 32
 A new IFS file will be created. If the file already exists the text is appended at the end.
 
 ### TABLE2XML – Create an XML Document for a table with all columns
-Parameter: ParTable     – VarChar(128)    – Table (SQL Name) to be converted into XML
-            ParSchema    – VarChar(128)    – Schema (SQL Name) of  the table to be converted into XML
-            ParWhere     – VarChar(4096)   – Additional Where Conditions (without leading WHERE) for reducing the data 
-                                             (Optional --> Default = ‘’)
-            ParOrderBy   – VarChar(1024)   – Order by clause (without leading ORDER BY) for sorting the result 
-                                             (Optional --> Default = ‘’)
-            ParRoot      – VarChar(128)    - Name of the Root Element (Optional --> Default = ‘”rowset”’)
-            ParRow       – VarChar(128)    – Name of the Row Element (Optional --> Default = ‘”row”’)
-            ParAsAttributes - VarChar(1)   – Y = single empty element per row, 
-                                             all column data are passed as attributes (Optional  Default = ‘’)
+Parameter: 
+<table>  
+<tr><th>Parameter Name</th><th>Data Type/Length</th><th>Description</th></tr>  
+<tr><td><b>ParTable        </b></td><td>VarChar(128)    </td><td>Table (SQL Name) to be converted into XML</td><tr>
+<tr><td><b>ParSchema       </b></td><td>VarChar(128)    </td><td>Schema (SQL Name) of the table to be converted into XML
+                                                        </td><tr>
+<tr><td><b>ParWhere        </b></td><td>VarChar(4096)   </td><td>Additional Where Conditions (without leading WHERE)<br> 
+                                                                 for reducing the data<br> 
+                                                                 (Optional --> Default = ‘’)</td><tr>
+<tr><td><b>ParOrderBy      </b></td><td>VarChar(1024)   </td><td>Order by clause (without leading ORDER BY)<br> 
+                                                                 for sorting the result<br> 
+                                                                 (Optional --> Default = ‘’)</td><tr>
+<tr><td><b>ParRoot         </b></td><td>VarChar(128)    </td><td>Name of the Root Element<br> 
+                                                                 (Optional --> Default = ‘”rowset”’)</td><tr> 
+<tr><td><b>ParRow          </b></td><td>VarChar(128)    </td><td>Name of the Row Element 
+                                                                 (Optional --> Default = ‘”row”’)</td><tr>
+<tr><td><b>ParAsAttributes </b></td><td>VarChar(1)      </td><td>Y = single empty element per row,<br> 
+                                                                     all column data are passed as attributes<br> 
+                                                                 (Optional --> Default = ‘’)
+</table>  
 
 Description:
 For the passed table a list of all columns separated by a comma is generated with the LIST_AGG Aggregate function 
@@ -243,29 +253,34 @@ from the SYSCOLUMS view.
 With this information and the passed parameter information a XMLGROUP Statement is performed that returns the XML data.
 
 Example:             
-<pre>Values(Table2XML('ADDRESSX', 'HSCOMMON05'));</pre>    
+<pre>Values(Table2XML('ADDRESSX', 'HSCOMMON10'));</pre>    
 
 <pre>
-Values(Table2XML('ADDRESSX', 'HSCOMMON05',
+Values(Table2XML('ADDRESSX', 'HSCOMMON10',
                  ParWhere       => 'ZipCode between ''70000'' and ''80000''',
                  ParOrderBy     => 'ZipCode, CustNo'));</pre>  
  
 <pre>
-Call WrtXML2IFS_Create(Table2XML('Umsatz', 'HSCOMMON05', 
-                                 ParWhere        => 'Year(VerkDatum) = 2005', 
-                                 ParOrderBy      => 'VerkDatum, KundeNr Desc',
+Call WrtXML2IFS_Create(Table2XML('SALES', 'HSCOMMON10', 
+                                 ParWhere        => 'Year(SalesDate) = 2018', 
+                                 ParOrderBy      => 'SalesDate, CustNo Desc',
                                  ParRoot         => '"Sales"',
-                                 ParRow          => '"SalesRow"' --,
+                                 ParRow          => '"SalesRow"',
                                  ParAsAttributes => 'Y'),
-                        '/home/Hauser/Umsatz20180127.xml'); </pre> 
+                        '/home/Hauser/Umsatz20180224.xml'); </pre> 
                  
 ### TABLE2JSON – Create JSON Data for a table containing all columns
-Parameter: ParTable        – VarChar(128)    – Table (SQL Name) to be converted into XML
-           ParSchema       – VarChar(128)    – Schema (SQL Name) of  the table to be converted into XML
-           ParWhere        – VarChar(4096)   – Additional Where Conditions 
-                                              (without leading WHERE) for reducing the data (Optional => Default = ‘’)
-           ParOrderBy      – VarChar(1024)   – Order by clause (without leading ORDER BY) 
-                                              for sorting the result (Optional => Default = ‘’)
+Parameter:
+<table>  
+<tr><th>Parameter Name</th><th>Data Type/Length</th><th>Description</th></tr>  
+<tr><td><b>ParTable     </b></td><td>VarChar(128)    </td><td>Table (SQL Name) to be converted into XML</td><tr>
+<tr><td><b>ParSchema    </b></td><td>VarChar(128)    </td><td>Schema (SQL Name) of  the table to be converted into XML</td><tr>
+<tr><td><b>ParWhere     </b></td><td>VarChar(4096)   </td><td>Additional Where Conditions (without leading WHERE)<br> 
+                                        for reducing the data<br> 
+                                        (Optional => Default = ‘’)</td><tr>
+<tr><td><b>ParOrderBy   </b></td><td>VarChar(1024)   </td><td>Order by clause (without leading ORDER BY)<br> 
+                                        for sorting the result (Optional => Default = ‘’)</td><tr>
+  </table>
                
  Description:
  For the passed table a list containing with columns separated by a comma is generated with the ListAgg Aggregate function 
@@ -274,18 +289,18 @@ Parameter: ParTable        – VarChar(128)    – Table (SQL Name) to be conver
  the JSON Data is created.
 
  Example:             
- <pre>Values(Table2JSON('ADDRESSX', 'HSCOMMON05'));</pre>    
+ <pre>Values(Table2JSON('ADDRESSX', 'HSCOMMON10'));</pre>    
 
 
 <pre>
-Values(Table2JSON('ADDRESSX', 'HSCOMMON05',
+Values(Table2JSON('ADDRESSX', 'HSCOMMON10',
                   ParWhere       => 'ZipCode between ''70000'' and ''80000''',
                   ParOrderBy     => 'ZipCode, CustNo'));</pre>   
  
 <pre>
-Call WrtJSON2IFS_Create(Table2JSON('Umsatz', 'HSCOMMON05', 
-                                   ParWhere    => 'Year(VerkDatum) = 2005', 
-                                   ParOrderBy  => 'VerkDatum, KundeNr Desc',
+Call WrtJSON2IFS_Create(Table2JSON('SALES', 'HSCOMMON10', 
+                                   ParWhere    => 'Year(SalesDate) = 2017', 
+                                   ParOrderBy  => 'SalesDate, CustNo Desc',
                                    ParRoot     => '"Sales"'),         
                         '/home/Hauser/Umsatz20180224.json');</pre>             
 
