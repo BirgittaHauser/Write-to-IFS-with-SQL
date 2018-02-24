@@ -24,6 +24,9 @@ Since 2002 she has frequently spoken at the COMMON User Groups and other IBM i a
 
 In addition, she is co-author of two IBM Redbooks and also the author of several articles and papers focusing on RPG and SQL for a German publisher, IBM DeveloperWorks and IT Jungle.
 
+## Prerequisites
+Minimum IBM i Release: 7.2 TR7 (or 7.3 TR3)
+
 ## Compile
 ### SNDMSG Service Program
 <ul><li>Create a module with the same name using the <strong>CRTRPGMOD</strong> CL command
@@ -54,7 +57,7 @@ If you create a binder directory with the name <b>HSBNDDIR</b> in your schema an
 ### SQL Stored Procedures and User Defined Functions
 The SQL Scripts containing the source code for the stored procedures, can be run with the <b>RUNSQLSTM command</b>:
 <pre>RUNSQLSTM SRCFILE(YOURSCHEMA/QSQLSRC)   
-               SRCMBR(TABLE2JSON)          
+               SRCMBR(WRT2IFS)          
                COMMIT(*NONE)               
                NAMING(*SYS)                
                MARGINS(132)                
