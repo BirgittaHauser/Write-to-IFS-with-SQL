@@ -4,7 +4,7 @@ Generate XML and JSON data and write them directly to the IFS with SQL
 ## Description
 This tool includes: 
 <Table>
-<tr><th>Program Type</th><th>Program/Procedure Name</th><th>Description</th></tr>  
+<tr><th>Program Type</th><th>Program/<br>Procedure Name</th><th>Description</th></tr>  
 <tr><td>Service Program       </td><td><b>SNDMSG    </b></td><td>contains the (RPG) prodecures 
                                                                  for sending escape messages</td><tr>
 <tr><td>RPGLE Program         </td><td><b>WRT2IFS   </b></td><td>for writing any text to the IFS</td></tr>
