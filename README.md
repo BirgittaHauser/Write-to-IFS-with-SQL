@@ -3,15 +3,21 @@ Generate XML and JSON data and write them directly to the IFS with SQL
 
 ## Description
 This tool includes: 
-<ul><li><strong>Service Program SNDMSG</strong> with the prodecures for sending escape messages</li>
-<li><strong>RPG Program WRT2IFS</strong> for Writing any text to the IFS</li>
-<li><strong>RPG Program WRTXML2IFS</strong> for Writing XML data (Data type XML) to the IFS</li>
-<li><strong>SQL Stored Procedures WRTIFSxxxx</strong> for Writing any character data into the IFS.</br> 
-  xxxx = File Operation i.e. Create/CreateReplace/Append</li>
-<li><strong>SQL Stored Procedures WRTIFSxxxx</strong> for Writing XML data (data type XML) into the IFS.</br> 
-xxxx = File Operation i.e. Create/CreateReplace/Append</li>
-<li><strong>SQL Stored Procedure TABLE2XML</strong> for generating the XML data for a complete Db2 table</li>
-<li><strong>SQL Stored Procedure JSON2XML</strong> for generating the XML data for a complete Db2 table</li></ul>
+<Table>
+<tr><th>Program Type</th><th>Program/Procedure Name</th><th>Description</th></tr>  
+<tr><td>Service Program       </td><td><b>SNDMSG    </b></td><td>contains the (RPG) prodecures 
+                                                                 for sending escape messages</td><tr>
+<tr><td>RPGLE Program         </td><td><b>WRT2IFS   </b></td><td>for writing any text to the IFS</td></tr>
+<tr><td>RPG Program           </td><td><b>WRTXML2IFS</b></td><td>for writing XML data (Data type XML) to the IFS</td></tr>
+<tr><td>SQL Stored Procedures </td><td><b>WRTIFSxxxx</b></td><td>for writing any character data into the IFS.</br> 
+                                                                 xxxx = File Operation <br>
+                                                                 i.e. Create/CreateReplace/Append</td></tr>
+<tr><td>SQL Stored Procedures </td><td><b>WRTIFSxxxx</b></td><td>for writing XML data (data type XML) into the IFS.</br> 
+                                                                 xxxx = File Operation 
+                                                                 <br>i.e. Create/CreateReplace/Append</td></tr>
+<tr><td>SQL Stored Procedure  </td><td><b>TABLE2XML </b></td><td> for generating the XML data for a complete Db2 table</td></tr>
+<tr><td>SQL Stored Procedure  </td><td><b>JSON2XML  </b></td><td> for generating the XML data for a complete Db2 table</td></tr>
+</Table>
 
 ## Author
 <strong>Birgitta Hauser</strong> has been a Software and Database Engineer since 2008, focusing on RPG, SQL and Web development on IBM i at Toolmaker Advanced Efficiency GmbH in Germany. She also works in consulting with regard to modernizaing applications on the IBM i as well as in education as a trainer for RPG and SQL developers. 
@@ -29,7 +35,7 @@ In addition, she is co-author of two IBM Redbooks and also the author of several
                 SRCFILE(YOURSCHEMA/QSRVSRC)</pre>
    </li></ul>
    
-If you create a binder directory names HSBNDDIR and add the SNDMSG service program to the binding directory in your schema and add the SNDMSG service program to this binding directory, you can create the RPG programs with the CRTBNDRPG command.
+If you create a binder directory with the name <b>HSBNDDIR<b> in your schema and <b>add the SNDMSG service program</b> to this binder directory, the RPG programs can be compiled with the the <b>CRTBNDRPG command</b>.
 
 The SQL Scripts containing the source code for the stored procedures, can be run with the RUNSQLSTM command:
 <pre>RUNSQLSTM SRCFILE(YOURSCHEMA/QSQLSRC)   
@@ -40,7 +46,9 @@ The SQL Scripts containing the source code for the stored procedures, can be run
                DFTRDBCOL(YOURSCHEMA)</pre>  
                
 It is also possible to run the SQL scripts from the RUN SQL SCRIPTING facility in Client Access or (even better) ACS (Access Client Solution). 
-Attention: The database objects are not qualified in the SQL script, so you need to add the SCHEMA by ourself.
+<Table>
+<tr><td>
+  <b>Attention:</b></td><td>The database objects are <b>not qualified</b> in the SQL script, <br>so you need to <b>add YOURSCHEMA</b> to the script by yourself.</td><tr>
    
 ## Programs and Procedures:
 ### SNDMSG (RPG Service Program) – Sending Program Messages from within RPG
