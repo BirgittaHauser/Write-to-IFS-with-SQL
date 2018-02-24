@@ -35,9 +35,9 @@ In addition, she is co-author of two IBM Redbooks and also the author of several
                 SRCFILE(YOURSCHEMA/QSRVSRC)</pre>
    </li></ul>
    
-If you create a binder directory with the name <b>HSBNDDIR<b> in your schema and <b>add the SNDMSG service program</b> to this binder directory, the RPG programs can be compiled with the the <b>CRTBNDRPG command</b>.
+If you create a binder directory with the name <b>HSBNDDIR</b> in your schema and <b>add the SNDMSG service program</b> to this binder directory, the RPG programs can be compiled with the the <b>CRTBNDRPG command</b>.
 
-The SQL Scripts containing the source code for the stored procedures, can be run with the RUNSQLSTM command:
+The SQL Scripts containing the source code for the stored procedures, can be run with the <b>RUNSQLSTM command</b>:
 <pre>RUNSQLSTM SRCFILE(YOURSCHEMA/QSQLSRC)   
                SRCMBR(TABLE2JSON)          
                COMMIT(*NONE)               
@@ -45,10 +45,12 @@ The SQL Scripts containing the source code for the stored procedures, can be run
                MARGINS(132)                
                DFTRDBCOL(YOURSCHEMA)</pre>  
                
-It is also possible to run the SQL scripts from the RUN SQL SCRIPTING facility in Client Access or (even better) ACS (Access Client Solution). 
+It is also possible to run the SQL scripts from the b>RUN SQL SCRIPTING facility</b> in Client Access or (even better) ACS (Access Client Solution). 
+
 <Table>
-<tr><td>
-  <b>Attention:</b></td><td>The database objects are <b>not qualified</b> in the SQL script, <br>so you need to <b>add YOURSCHEMA</b> to the script by yourself.</td><tr>
+<tr><td><b>Attention:</b></td><td>The database objects are <b>not qualified</b> in the SQL script, <br>
+                                   so you need to <b>add YOURSCHEMA</b> to the script by yourself.</td><tr>
+</Table>
    
 ## Programs and Procedures:
 ### SNDMSG (RPG Service Program) – Sending Program Messages from within RPG
