@@ -28,12 +28,14 @@ In addition, she is co-author of two IBM Redbooks and also the author of several
 
 ## Compile
 ### SNDMSG Service Program
-<ul><li>Create a module with the <strong>CRTRPGMOD</strong> CL command</li>
+<ul><li>Create a module with the same name using the <strong>CRTRPGMOD</strong> CL command</li>
   <li>Create the service Program with the <strong>CRTSRVPGM</strong CL command</br>
       <pre>CRTSRVPGM SRVPGM(YOURSCHEMA/SNDMSG)                                                   
                 MODULE(SNDMSG)                                                            
                 SRCFILE(YOURSCHEMA/QSRVSRC)</pre>
-   </li></ul>
+   </li>
+  <li>Delete the module after having successfully created the service program.</li> 
+</ul>
 
 ### RPG Programs
 If you create a binder directory with the name <b>HSBNDDIR</b> in your schema and <b>add the SNDMSG service program</b> to this binder directory, the RPG programs can be compiled with the the <b>CRTBNDRPG command</b>.
