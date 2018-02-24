@@ -7,8 +7,8 @@ This tool includes:
 <tr><th>Program Type</th><th>Program/<br>Procedure Name</th><th>Description</th></tr>  
 <tr><td>Service Program       </td><td><b>SNDMSG    </b></td><td>contains the (RPG) prodecures 
                                                                  for sending escape messages</td><tr>
-<tr><td>RPGLE Program         </td><td><b>WRT2IFS   </b></td><td>for writing any character data to the IFS</td></tr>
-<tr><td>RPG Program           </td><td><b>WRTXML2IFS</b></td><td>for writing XML data (Data type XML) to the IFS</td></tr>
+<tr><td>SQLRPGLE Program      </td><td><b>WRT2IFS   </b></td><td>for writing any character data to the IFS</td></tr>
+<tr><td>SQLRPGLE Program      </td><td><b>WRTXML2IFS</b></td><td>for writing XML data (Data type XML) to the IFS</td></tr>
 <tr><td>SQL Stored Procedures </td><td><b>WRT2IFSxxxx</b></td><td>for writing any character data into the IFS.</br> 
                                                                  xxxx = File Operation <br>
                                                                  i.e. Create/CreateReplace/Append</td></tr>
