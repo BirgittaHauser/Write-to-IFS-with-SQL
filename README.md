@@ -99,7 +99,7 @@ Parameter:
 <tr><td><b>ParOperation   </b></td><td>Integer          </td><td>8=Create / 16=Replace / 32=Append</td><tr>
 </table>  
 
-The WRT2IFSxxxxx stored procedures are Wrapper around the RPG Program WRT2IFS.
+The WRT2IFSxxxxx stored procedures are Wrapper around the WRT2IFS RPG Program.
 
 Example:  
 <pre>
@@ -124,10 +124,14 @@ Call Wrt2IFS_Create(Cast('{"root": {"Name": "Hauser",
                          '/home/Hauser/Tst20180224');</pre>
 
 ### WRT2IFS_CREATEREPLACE – Write Character Data to the IFS – Replace an existing files
-Parameter: ParText      – CLOB(16 M)         - Text to be written into the IFS
-           ParIFSFile   – VarChar(1024)      – IFS File to be written, replaced or appended
-   
-Calls the WRT2IFS Procedure, the File Operation is passed fix with 16
+Parameter: 
+<table>
+<tr><th>Parameter Name</th><th>Data Type/Length</th><th>Description</th></tr>    
+<tr><td><b>ParText      </b></td><td>CLOB(16 M)           </td><td>Text to be written into the IFS</td><tr>
+<tr><td><b>ParIFSFile   </b></td><td>VarChar(1024)        </td><td>IFS File to be written, replaced or appended</td><tr>
+</table>
+
+Calls the WRT2IFS Procedure, the File Operation is passed fix with 16.
 A new IFS file will be created. If the file already exists the existing one is replaced.
 
 Example: 
@@ -138,9 +142,13 @@ Call Wrt2IFS_CreateReplace(Cast('{"root": {"Name": "Hauser",
                            '/home/Hauser/Tst20180224');</pre>
 
 ### WRT2IFS_APPEND – Write Character Data to the IFS – Append data to an existing one
-Parameter: ParText      – CLOB(16 M)      - Text to be written into the IFS
-           ParIFSFile   – VarChar(1024)   – IFS File to be written, replaced or appended
-               
+Parameter: 
+<table>
+<tr><th>Parameter Name</th><th>Data Type/Length</th><th>Description</th></tr>    
+<tr><td><b>ParText      </b></td><td>CLOB(16 M)           </td><td>Text to be written into the IFS</td><tr>
+<tr><td><b>ParIFSFile   </b></td><td>VarChar(1024)        </td><td>IFS File to be written, replaced or appended</td><tr>
+</table>
+
 Calls the WRT2IFS Procedure, the File Operation is passed fix with 32
 A new IFS file will be created. If the file already exists the text is appended at the end.
 
@@ -151,19 +159,32 @@ Call Wrt2IFS_Append(Cast(', {"Street": "Dr.-Gerbl-Str.",
                     '/home/Hauser/Tst20180127');</pre>
 
 ### WRTXML2IFSxxxx (Stored Procedures) – Write XML Data to the IFS
-WRTXML2IFS – Write XML Data to the IFS --> Wrapper around the RPG Program WRT2IFS
 Parameter: ParText          – XML             – XML Data to be written into the IFS
            ParIFSFile       – VarChar(1024)   – IFS File to be written, replaced or appended
            ParOperation     – Integer         – 8=Create / 16=Replace / 32=Append
 
-Example: 
+Parameter: 
+<table>  
+<tr><th>Parameter Name</th><th>Data Type/Length</th><th>Description</th></tr>  
+<tr><td><b>ParText        </b></td><td>XML              </td><td>XML data to be written into the IFS</td><tr>
+<tr><td><b>ParIFSFile     </b></td><td>VarChar(1024)    </td><td>IFS File to be written, replaced or appended</td><tr>
+<tr><td><b>ParOperation   </b></td><td>Integer          </td><td>8=Create / 16=Replace / 32=Append</td><tr>
+</table>  
+
+The WRTXML2IFSxxxxx stored procedures are Wrapper around the WRTXML2IFS RPG Program .
+
+Example:
 <pre>
 Call WrtXML2IFS(XMLElement(Name "root", XMLElement(Name "Name", 'Hauser')), 
-                           '/home/Hauser/TstXML20180127.xml', 16);</pre>
+                           '/home/Hauser/TstXML20180224.xml', 16);</pre>
 
 ### WRTXML2IFS_CREATE – Write XML Data to the IFS – Create a New File
-Parameter: ParText      – XML                 – XML Data to be written into the IFS
-           ParIFSFile   – VarChar(1024)       – IFS File to be written, replaced or appended
+Parameter: 
+<table>  
+<tr><th>Parameter Name</th><th>Data Type/Length</th><th>Description</th></tr>  
+<tr><td><b>ParText      </b></td><td>XML                 </td><td>XML Data to be written into the IFS</td><tr>
+<tr><td><b>ParIFSFile   </b></td><td>VarChar(1024)       </td><td>IFS File to be written, replaced or appended</td><tr>
+</table>  
    
 Calls the WRTXML2IFS Procedure, the File Operation is passed fix with 8
 A new IFS file will be created. If the file already exists an error will be returned
@@ -171,11 +192,15 @@ A new IFS file will be created. If the file already exists an error will be retu
 Example: 
 <pre>
 Call WrtXML2IFS_Create(XMLElement(Name "root", XMLElement(Name "Name", 'Hauser')), 
-                      '/home/Hauser/TstXML20180127.xml');</pre>
+                      '/home/Hauser/TstXML20180224.xml');</pre>
 
 ### WRT2IFS_CREATEREPLACE – Write XML Data to the IFS – Replace an existing file
-Parameter: ParText       – XML               – XML Data to be written into the IFS
-           ParIFSFile    – VarChar(1024)     – IFS File to be written, replaced or appended
+Parameter: 
+<table>  
+<tr><th>Parameter Name</th><th>Data Type/Length</th><th>Description</th></tr>  
+<tr><td><b>ParText      </b></td><td>XML                 </td><td>XML Data to be written into the IFS</td><tr>
+<tr><td><b>ParIFSFile   </b></td><td>VarChar(1024)       </td><td>IFS File to be written, replaced or appended</td><tr>
+</table>  
    
 Calls the WRTXML2IFS Procedure, the File Operation is passed fix with 16
 A new IFS file will be created. If the file already exists the existing one is replaced.
@@ -188,8 +213,12 @@ Call WrtXML2IFS_CreateReplace(XMLElement(Name "root",
                               '/home/Hauser/TstXML20180224.xml');```</pre>
 
 ### WRT2IFS_APPEND – Write XML Data to the IFS – Append data to an existing file
-Parameter: ParText     – XML                 – XML Data to be written into the IFS
-           ParIFSFile  – VarChar(1024)       - IFS File to be written, replaced or appended
+Parameter: 
+<table>  
+<tr><th>Parameter Name</th><th>Data Type/Length</th><th>Description</th></tr>  
+<tr><td><b>ParText      </b></td><td>XML                 </td><td>XML Data to be written into the IFS</td><tr>
+<tr><td><b>ParIFSFile   </b></td><td>VarChar(1024)       </td><td>IFS File to be written, replaced or appended</td><tr>
+</table>  
    
 Calls the WRTXML2IFS Procedure, the File Operation is passed fix with 32
 A new IFS file will be created. If the file already exists the text is appended at the end.
