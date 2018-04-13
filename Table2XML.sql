@@ -63,7 +63,7 @@ Create or Replace Function TABLE2XML(
      If Trim(ParRoot) = '' Then Set ParRoot = '"rowset"';                                                               
      End If;                                                                                                            
                                                                                                                         
-     If Trim(ParRow)  = '' Then Set ParRoot = '"row"';                                                                  
+     If Trim(ParRow)  = '' Then Set ParRow = '"row"';                                                                  
      End If;                                                                                                            
                                                                                                                         
      If Upper(ParAsAttributes) = 'Y'                                                                                    
